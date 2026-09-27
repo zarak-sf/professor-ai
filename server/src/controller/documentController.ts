@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { Request, Response, NextFunction } from "express";
 import { DocumentRepository } from "../repositories/DocumentRepository";
 import QuizModel from "../models/Quiz";
@@ -19,8 +20,18 @@ export class DocumentController {
                 return next(AppError.unauthorized());
             }
 
-            const [documents, quizDocIds, flashcardDocIds, visualizeDocIds] = await Promise.all([
-                this.documentRepository.findByUserId(user.userId),
+            // If MongoDB is not connected, gracefully return empty list
+            if (mongoose.connection.readyState !== 1) {
+                console.warn('[DOCUMENTS] MongoDB is not connected. Returning empty documents list.');
+                return res.json({ documents: [] });
+            }
+
+            const documents = await this.documentRepository.findByUserId(user.userId);
+            if (!documents || documents.length === 0) {
+                return res.json({ documents: [] });
+            }
+
+            const [quizDocIds, flashcardDocIds, visualizeDocIds] = await Promise.all([
                 QuizModel.distinct("doc_id", { user_id: user.userId }),
                 FlashcardModel.distinct("doc_id", { user_id: user.userId }),
                 VisualizationModel.distinct("doc_id", { user_id: user.userId })
