@@ -341,6 +341,14 @@
     animation: fade-in 0.3s ease-out forwards;
   }
 
+  .animate-spin {
+    animation: spin 1s linear infinite !important;
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -350,8 +358,26 @@
   }
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+  *:not(.animate-spin):not(.animate-spin *), ::before, ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

@@ -13,7 +13,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Aimmyy AI](https://img.shields.io/badge/Powered_by-Aimmyy_AI-213448?style=for-the-badge&logoColor=white)](https://github.com/)
-[![Creator](https://img.shields.io/badge/Project_by-Zarak_K.-547792?style=for-the-badge)](https://github.com/)
+[![Creator](https://img.shields.io/badge/Project_by-Zarak_K.-547792?style=for-the-badge)](https://github.com/zarak-dev/)
 
 </div>
 
